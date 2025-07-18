@@ -1,4 +1,4 @@
-# Information Retrieval from Multiple PDF 💁💬 with PaLM2
+# PDF Conversational AI Retriever 💁💬
 
 
 # How to run?
@@ -7,12 +7,13 @@
 Clone the repository
 
 ```bash
-Project repo: https://github.com/
+Project repo: https://github.com/aryan-bhagwat/
 ```
+
 ### STEP 01- Create a conda environment after opening the repository
 
 ```bash
-conda create -n llmapp python=3.8 -y
+conda create -n llmapp python -y
 ```
 
 ```bash
