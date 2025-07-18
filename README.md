@@ -7,7 +7,7 @@
 Clone the repository
 
 ```bash
-Project repo: https://github.com/aryan-bhagwat/
+Project repo: https://github.com/aryan-bhagwat/pdf-conversational-ai-retriever.git
 ```
 
 ### STEP 01- Create a conda environment after opening the repository
