@@ -28,7 +28,7 @@ pip install -r requirements.txt
 ### Create a `.env` file in the root directory and add your GOOGLE_API_KEY as follows:
 
 ```ini
-GOOGLE_API_KEY= "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+GROQ_API_KEY= "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 
@@ -42,11 +42,17 @@ Now,
 open up : http://localhost:8501
 ```
 
+## Usage
+- Upload one or more PDF files using the sidebar.
+- Click "Submit & Process" to process the documents.
+- Ask questions about the content of your PDFs in the main input box.
 
 ### Techstack Used:
 
 - Python
+- Streamlit
 - LangChain
-- Streamlit 
-- PaLM2
-- FAISS
+- Groq (Llama 3 70B)
+- FAISS (vector store)
+- PyPDF2 (PDF parsing)
+- HuggingFace Embeddings
