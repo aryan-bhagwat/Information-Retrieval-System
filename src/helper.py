@@ -7,11 +7,10 @@ from langchain.vectorstores import FAISS
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from dotenv import load_dotenv
-
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_groq import ChatGroq
 
 load_dotenv()
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")  
-os.environ['GOOGLE_API_KEY'] =  GOOGLE_API_KEY
 
 
 def get_pdf_text(pdf_docs):
@@ -32,14 +31,21 @@ def get_text_chunks(text):
 
 
 def get_vector_store(text_chunks):
-    embeddings = GooglePalmEmbeddings()
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
     return vector_store
 
 
 
 def get_conversational_chain(vector_store):
-    llm=GooglePalm()
-    memory = ConversationBufferMemory(memory_key = "chat_history", return_messages=True)
-    conversation_chain = ConversationalRetrievalChain.from_llm(llm=llm, retriever=vector_store.as_retriever(), memory=memory)
+    llm = ChatGroq(
+        groq_api_key=os.getenv("GROQ_API_KEY"),
+        model_name="llama3-70b-8192"
+    )
+    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+    conversation_chain = ConversationalRetrievalChain.from_llm(
+        llm=llm,
+        retriever=vector_store.as_retriever(),
+        memory=memory
+    )
     return conversation_chain
