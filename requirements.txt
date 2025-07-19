@@ -4,4 +4,8 @@ langchain
 PyPDF2
 faiss-cpu
 streamlit
+langchain_groq
+transformers
+sentence-transformers
+torch
 -e .
